@@ -519,7 +519,7 @@ class Protocol:
         # If specified, all the above stages are skipped, solely the composable key rate is produced and the simulation ends.
         if self.is_error_corrected:
             # Generate the parity-check matrix H, as well as the indices of the variable nodes and the check nodes
-            k, l, H, H_sparse, H_vals, R_des, wc, wr = ldpc.generate_code(n, self.q, R_code, self.is_code_loaded)
+            k, l, H, H_sparse, H_vals, R_des, wc, wr = ldpc.generate_code(n, self.q, R_code, load=False)
             beta_true = generic.precise_reconciliation_efficiency(R_des, I_XY_hat, H_K, self.q, self.p, d_ent)
             start = timeit.default_timer()
             CN, VN, VN_exc = ldpc.get_nodes(n, l, H_sparse, False)
